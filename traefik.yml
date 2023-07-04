@@ -1,0 +1,51 @@
+################################################################
+# Docker configuration backend
+################################################################
+
+providers:
+  # Enable Docker configuration backend
+  docker:
+    # Docker server endpoint. Can be a tcp or a unix socket endpoint.
+    #
+    # Required
+    # Default: "unix:///var/run/docker.sock"
+    #
+    #endpoint: tcp://10.10.10.10:2375
+
+    # Default host rule.
+    #
+    # Optional
+    # Default: "Host(`{{ normalize .Name }}`)"
+    # 
+    # Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)
+    defaultRule: Host(`{{ normalize .Name }}.example.io`)
+
+    # Expose containers by default in traefik
+    #
+    # Optional
+    # Default: true
+    #
+    #exposedByDefault: false
+
+################################################################
+# API and dashboard configuration
+################################################################
+
+# Enable API and dashboard
+#
+# Optional
+#
+api:
+  # Enable the API in insecure mode
+  #
+  # Optional
+  # Default: false
+  #
+  insecure: true
+
+  # Enabled Dashboard
+  #
+  # Optional
+  # Default: true
+  #
+  #dashboard: false
